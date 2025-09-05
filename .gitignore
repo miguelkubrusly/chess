@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+# Dados temporários
+.cache/
+tmp/
+
+# Node/Docs site artifacts
+tools/openapi/site/node_modules/
+tools/openapi/site/.pnpm-store/
+tools/openapi/site/.pnpm-debug.log
+tools/openapi/site/pnpm-lock.yaml
+tools/openapi/site/dist/
+
+# OpenAPI build output
+.openapi_client_build/
+
+# Vendored/generated client (can be regenerated)
+third_party/lichess_org_api_reference_client/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
