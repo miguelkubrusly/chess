@@ -1,0 +1,102 @@
+from collections.abc import Mapping
+from typing import Any, TypeVar, Optional, BinaryIO, TextIO, TYPE_CHECKING, Generator
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+from ..models.timeline_entry_game_end_type import TimelineEntryGameEndType
+from typing import cast
+
+if TYPE_CHECKING:
+  from ..models.timeline_entry_game_end_data import TimelineEntryGameEndData
+
+
+
+
+
+T = TypeVar("T", bound="TimelineEntryGameEnd")
+
+
+
+@_attrs_define
+class TimelineEntryGameEnd:
+    """ 
+        Attributes:
+            type_ (TimelineEntryGameEndType):
+            date (float):
+            data (TimelineEntryGameEndData):
+     """
+
+    type_: TimelineEntryGameEndType
+    date: float
+    data: 'TimelineEntryGameEndData'
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+
+
+
+
+    def to_dict(self) -> dict[str, Any]:
+        from ..models.timeline_entry_game_end_data import TimelineEntryGameEndData
+        type_ = self.type_.value
+
+        date = self.date
+
+        data = self.data.to_dict()
+
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({
+            "type": type_,
+            "date": date,
+            "data": data,
+        })
+
+        return field_dict
+
+
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        from ..models.timeline_entry_game_end_data import TimelineEntryGameEndData
+        d = dict(src_dict)
+        type_ = TimelineEntryGameEndType(d.pop("type"))
+
+
+
+
+        date = d.pop("date")
+
+        data = TimelineEntryGameEndData.from_dict(d.pop("data"))
+
+
+
+
+        timeline_entry_game_end = cls(
+            type_=type_,
+            date=date,
+            data=data,
+        )
+
+
+        timeline_entry_game_end.additional_properties = d
+        return timeline_entry_game_end
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

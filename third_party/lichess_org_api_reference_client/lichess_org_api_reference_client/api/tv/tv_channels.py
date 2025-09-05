@@ -1,0 +1,165 @@
+from http import HTTPStatus
+from typing import Any, Optional, Union, cast
+
+import httpx
+
+from ...client import AuthenticatedClient, Client
+from ...types import Response, UNSET
+from ... import errors
+
+from ...models.tv_channels_response_200 import TvChannelsResponse200
+from typing import cast
+
+
+
+def _get_kwargs(
+    
+) -> dict[str, Any]:
+    
+
+    
+
+    
+
+    _kwargs: dict[str, Any] = {
+        "method": "get",
+        "url": "/api/tv/channels",
+    }
+
+
+    return _kwargs
+
+
+
+def _parse_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Optional[TvChannelsResponse200]:
+    if response.status_code == 200:
+        response_200 = TvChannelsResponse200.from_dict(response.json())
+
+
+
+        return response_200
+
+    if client.raise_on_unexpected_status:
+        raise errors.UnexpectedStatus(response.status_code, response.content)
+    else:
+        return None
+
+
+def _build_response(*, client: Union[AuthenticatedClient, Client], response: httpx.Response) -> Response[TvChannelsResponse200]:
+    return Response(
+        status_code=HTTPStatus(response.status_code),
+        content=response.content,
+        headers=response.headers,
+        parsed=_parse_response(client=client, response=response),
+    )
+
+
+def sync_detailed(
+    *,
+    client: Union[AuthenticatedClient, Client],
+
+) -> Response[TvChannelsResponse200]:
+    """ Get current TV games
+
+     Get basic info about the best games being played for each speed and variant,
+    but also computer games and bot games.
+    See [lichess.org/tv](https://lichess.org/tv).
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[TvChannelsResponse200]
+     """
+
+
+    kwargs = _get_kwargs(
+        
+    )
+
+    response = client.get_httpx_client().request(
+        **kwargs,
+    )
+
+    return _build_response(client=client, response=response)
+
+def sync(
+    *,
+    client: Union[AuthenticatedClient, Client],
+
+) -> Optional[TvChannelsResponse200]:
+    """ Get current TV games
+
+     Get basic info about the best games being played for each speed and variant,
+    but also computer games and bot games.
+    See [lichess.org/tv](https://lichess.org/tv).
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        TvChannelsResponse200
+     """
+
+
+    return sync_detailed(
+        client=client,
+
+    ).parsed
+
+async def asyncio_detailed(
+    *,
+    client: Union[AuthenticatedClient, Client],
+
+) -> Response[TvChannelsResponse200]:
+    """ Get current TV games
+
+     Get basic info about the best games being played for each speed and variant,
+    but also computer games and bot games.
+    See [lichess.org/tv](https://lichess.org/tv).
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        Response[TvChannelsResponse200]
+     """
+
+
+    kwargs = _get_kwargs(
+        
+    )
+
+    response = await client.get_async_httpx_client().request(
+        **kwargs
+    )
+
+    return _build_response(client=client, response=response)
+
+async def asyncio(
+    *,
+    client: Union[AuthenticatedClient, Client],
+
+) -> Optional[TvChannelsResponse200]:
+    """ Get current TV games
+
+     Get basic info about the best games being played for each speed and variant,
+    but also computer games and bot games.
+    See [lichess.org/tv](https://lichess.org/tv).
+
+    Raises:
+        errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
+        httpx.TimeoutException: If the request takes longer than Client.timeout.
+
+    Returns:
+        TvChannelsResponse200
+     """
+
+
+    return (await asyncio_detailed(
+        client=client,
+
+    )).parsed

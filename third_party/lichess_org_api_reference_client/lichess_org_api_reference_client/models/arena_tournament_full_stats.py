@@ -1,0 +1,122 @@
+from collections.abc import Mapping
+from typing import Any, TypeVar, Optional, BinaryIO, TextIO, TYPE_CHECKING, Generator
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+
+
+
+
+
+
+T = TypeVar("T", bound="ArenaTournamentFullStats")
+
+
+
+@_attrs_define
+class ArenaTournamentFullStats:
+    """ 
+        Attributes:
+            games (float):
+            moves (float):
+            white_wins (float):
+            black_wins (float):
+            draws (float):
+            berserks (float):
+            average_rating (float):
+     """
+
+    games: float
+    moves: float
+    white_wins: float
+    black_wins: float
+    draws: float
+    berserks: float
+    average_rating: float
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+
+
+
+
+    def to_dict(self) -> dict[str, Any]:
+        games = self.games
+
+        moves = self.moves
+
+        white_wins = self.white_wins
+
+        black_wins = self.black_wins
+
+        draws = self.draws
+
+        berserks = self.berserks
+
+        average_rating = self.average_rating
+
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({
+            "games": games,
+            "moves": moves,
+            "whiteWins": white_wins,
+            "blackWins": black_wins,
+            "draws": draws,
+            "berserks": berserks,
+            "averageRating": average_rating,
+        })
+
+        return field_dict
+
+
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        games = d.pop("games")
+
+        moves = d.pop("moves")
+
+        white_wins = d.pop("whiteWins")
+
+        black_wins = d.pop("blackWins")
+
+        draws = d.pop("draws")
+
+        berserks = d.pop("berserks")
+
+        average_rating = d.pop("averageRating")
+
+        arena_tournament_full_stats = cls(
+            games=games,
+            moves=moves,
+            white_wins=white_wins,
+            black_wins=black_wins,
+            draws=draws,
+            berserks=berserks,
+            average_rating=average_rating,
+        )
+
+
+        arena_tournament_full_stats.additional_properties = d
+        return arena_tournament_full_stats
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties
