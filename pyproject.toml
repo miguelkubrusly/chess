@@ -10,16 +10,10 @@ requires-python = ">=3.11"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = [
-  "lichess_sdk",
-  "lichess_sdk.*",
-  "lichess_analysis",
-]
+include = ["lichess_sdk", "lichess_sdk.*"]
 
 [tool.setuptools]
 exclude-package-data = {
-    "*" = [
-        "third_party/*",
-        "tools/*",
-    ]
+    
 }
+"*" = ["third_party/*", "tools/*"]
