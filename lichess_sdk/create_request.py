@@ -5,14 +5,14 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from .utils import get_api_key, get_lichess_token
+from .utils import get_lichess_token
 from .client import LichessClient
 from .types import HTTPMethod
 
 
 def create_request(
     url: str,
-    method: HTTPMethod | str = "GET",
+    method: HTTPMethod = "GET",
     *,
     content_type: str = "application/json",
     accept: str = "application/json",
@@ -99,4 +99,3 @@ def create_request(
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return None
-
