@@ -25,3 +25,9 @@ third_party/lichess_org_api_reference_client/
 Thumbs.db
 .idea/
 .vscode/
+
+# Ignore images in repo
+*.png
+*.jpg
+*.jpeg
+*.svg
