@@ -13,7 +13,4 @@ where = ["."]
 include = ["lichess_sdk", "lichess_sdk.*"]
 
 [tool.setuptools]
-exclude-package-data = {
-    
-}
-"*" = ["third_party/*", "tools/*"]
+exclude-package-data = {"*" = ["third_party/*", "tools/*"]}
