@@ -15,21 +15,13 @@ from .types import HTTPMethod, Headers, Query, PerfType
 from .create_request import create_request
 from .download_games import download_games
 
-# Re-export selected official types/enums for stable imports within this repo
-try:
-    from lichess_org_api_reference_client.types import UNSET, Unset, Response as LichessResponse
-    from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
-    from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
-    from lichess_org_api_reference_client.models.api_games_user_perf_type import (
-        ApiGamesUserPerfType,
-    )
-except Exception:  # pragma: no cover - optional at runtime
-    UNSET = None  # type: ignore
-    Unset = object  # type: ignore
-    LichessResponse = object  # type: ignore
-    ApiGamesUserColor = object  # type: ignore
-    ApiGamesUserSort = object  # type: ignore
-    ApiGamesUserPerfType = object  # type: ignore
+# Re-export selected official types/enums
+from lichess_org_api_reference_client.types import UNSET, Unset, Response as LichessResponse
+from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
+from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
+from lichess_org_api_reference_client.models.api_games_user_perf_type import (
+    ApiGamesUserPerfType,
+)
 
 __all__ = [
     "__version__",

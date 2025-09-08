@@ -1,18 +1,14 @@
 from __future__ import annotations
 
-from typing import Any, TYPE_CHECKING
+ 
 import json
 
 from .create_request import create_request
 from .utils import get_lichess_token
 from .types import NdjsonGame, DownloadParams, PerfType
 from .client import LichessClient
-if TYPE_CHECKING:
-    from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
-    from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
-else:
-    from typing import Any as ApiGamesUserColor  # type: ignore
-    from typing import Any as ApiGamesUserSort  # type: ignore
+from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
+from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
 
 
 def download_games(
@@ -60,7 +56,6 @@ def download_games(
 
     # Guard: lastFen is NDJSON-only. If PGN, drop it to avoid confusion.
     if fmt == "pgn" and last_fen:
-        print("Aviso: 'lastFen' é ignorado no formato PGN; removendo parâmetro.")
         last_fen = None
 
     # Build query params using API's expected casing

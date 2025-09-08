@@ -1,13 +1,9 @@
 from __future__ import annotations
 
-from typing import Literal, Mapping, TypedDict, NotRequired, TYPE_CHECKING, Any
+from typing import Literal, Mapping, TypedDict, NotRequired
 from enum import Enum
-if TYPE_CHECKING:  # avoid hard runtime dependency for simple imports/tests
-    from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
-    from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
-else:  # fallbacks for runtime (typing only)
-    ApiGamesUserColor = Any  # type: ignore
-    ApiGamesUserSort = Any  # type: ignore
+from lichess_org_api_reference_client.models.api_games_user_color import ApiGamesUserColor
+from lichess_org_api_reference_client.models.api_games_user_sort import ApiGamesUserSort
 
 
 # HTTP typing primitives
